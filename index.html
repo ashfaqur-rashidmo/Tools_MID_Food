@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+
+    <title>Bakery1111</title>
+</head>
+<body class="font-sans bg-gray-100">
+  <!-- Navbar -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0 text-xl font-bold text-[#ff6347]">
+        MyShop
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6 items-center">
+        <a href="#" class="text-gray-700 hover:text-[#ff6347] transition">Home</a>
+        <a href="#menu" class="text-gray-700 hover:text-[#ff6347] transition">Menu</a>
+        <a href="#footer" class="text-gray-700 hover:text-[#ff6347] transition">Contact Us</a>
+
+        <!-- Desktop Cart Icon -->
+        <div class="relative cursor-pointer" onclick="orderDetails()">
+          <i class="fas fa-shopping-cart text-2xl"></i>
+          <span id="cart-badge"
+                class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 rounded-full">
+            0
+          </span>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button onclick="toggleMobileMenu()" id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
+    <a href="#" class="block text-gray-700 hover:text-[#ff6347]">Home</a>
+    <a href="#menu" class="block text-gray-700 hover:text-[#ff6347]">Menu</a>
+    <a href="#footer" class="block text-gray-700 hover:text-[#ff6347]">Contact Us</a>
+
+    <!-- Mobile Cart Icon -->
+    <div class="relative cursor-pointer" onclick="orderDetails()">
+      <i class="fas fa-shopping-cart text-2xl"></i>
+      <span id="cart-badge"
+            class=" -top-2 -right-2 bg-red-600 text-white text-xs px-2 rounded-full">
+        0
+      </span>
+    </div>
+  </div>
+</nav>
+
+<!--  Shopping Cart Panel -->
+<div class="order-details fixed top-16 right-4 bg-white z-50 p-4 border border-gray-300 max-h-[85vh] overflow-y-auto shadow-lg rounded-lg w-[260px] flex flex-col justify-between hidden" id="orderDetails">
+  <div>
+    <h1 class="text-2xl font-semibold text-gray-800 text-center mb-4 border-b pb-2">My Shopping</h1>
+  </div>
+
+  <!-- Ordered products here -->
+  <div id="ordered-products" class="grid grid-cols-1 gap-4 mb-4"></div>
+
+  
+  <div class="space-y-3 text-gray-700 text-sm mt-auto">
+    <div class="flex justify-between">
+      <span>Quantity</span>
+      <span id="Total-Product">0</span>
+    </div>
+    <div class="flex justify-between">
+      <span>Price</span>
+      <span id="price">0</span>
+    </div>
+    <div class="flex justify-between">
+      <span>Delivery Charge</span>
+      <span id="delivery-charge">0</span>
+    </div>
+    <div class="flex justify-between">
+      <span>Shipping Cost</span>
+      <span id="shipping-cost">0</span>
+    </div>
+
+    <hr class="my-2">
+
+    <div class="flex justify-between font-semibold text-lg text-black">
+      <span>Total</span>
+      <span id="total">0</span>
+    </div>
+
+    <div class="flex justify-between gap-2 pt-2">
+      <button onclick="orderProducts()" class="bg-[#ff6347] px-4 py-2 rounded-full text-white font-semibold">Order Now</button>
+      <button onclick="Discount()" id="offer" class="bg-[#ff6347] px-4 py-2 rounded-full text-white font-semibold">Get Offer</button>
+    </div>
+
+    <div id="details" class="pt-4"></div>
+  </div>
+</div>
+
+
+
+</section>
+
+
+
+        </div>
+        
+        <!-- Mobile Menu Button -->
+<div class="md:hidden flex items-center">
+  <button onclick="toggleMobileMenu()" id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</div>
+
+      </div>
+    </div>
+
+    <div id="shopping-card-container"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
+      <a href="#" class="block text-gray-700 hover:text-[#ff6347]">Home</a>
+      <a href="#menu" class="block text-gray-700 hover:text-[#ff6347]">Menu</a>
+      <a href="#footer" class="block text-gray-700 hover:text-[#ff6347]">Contact Us</a>
+   <div class="relative cursor-pointer" onclick="orderDetails()">
+  <i class="fas fa-shopping-cart text-2xl"></i>
+  <span id="cart-badge"
+        class="top-2 -right-2 bg-red-600 text-white text-xs px-2 rounded-full">
+    0
+  </span>
+</div>
+
+
+    </div>
+  </nav>
+
+
+  <!-- Slides -->
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+  <!-- Carousel wrapper -->
+  <div class="relative w-full h-64 sm:h-80 md:h-96 lg:h-[32rem] xl:h-[36rem] overflow-hidden rounded-lg">
+    <!-- Item 1 -->
+    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+      <img src="./assets/salad.jpg" 
+           class="absolute w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+           alt="Salad">
+    </div>
+    <!-- Item 2 -->
+    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+      <img src="./assets/header2.png" 
+           class="absolute w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+           alt="Header">
+    </div>
+    <!-- Item 3 -->
+    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+      <img src="./assets/rolls.jpg" 
+           class="absolute w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+           alt="Rolls">
+    </div>
+    <!-- Item 4 -->
+    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+      <img src="./assets/pasta.jpg" 
+           class="absolute w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+           alt="Pasta">
+    </div>
+    <!-- Item 5 -->
+    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+      <img src="./assets/ice-cream-3.jpg" 
+           class="absolute w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+           alt="Ice Cream">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <!-- displaying Cart -->
+ <div class="container mx-auto px-4 py-6" id="menu">
+  <h1 class="text-center font-bold text-3xl mt-4">Products</h1>
+    <div class="grid lg:grid-cols-[3fr_1fr] gap-6 mt-6">
+        <div id="display-card" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"> </div>
+  </div>
+ </div>
+
+  
+
+<!-- Customer review -->
+ <!-- Carousel Container -->
+  <h1 class="text-center font-bold text-3xl mt-4">Customer Review</h1>
+<div class="w-full max-w-xl mx-auto bg-white rounded-xl shadow-md p-6 relative mt-6">
+  <!-- Slides -->
+  <div class="relative h-64">
+    <!-- Slide 1 -->
+    <input type="radio" name="carousel" id="carousel-1" class="hidden peer/slide1" checked>
+    <div class="absolute inset-0 opacity-0 peer-checked/slide1:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center">
+      <img src="https://i.pravatar.cc/100?img=1" alt="" class="w-30 h-30 rounded-full mb-4" />
+      <h3 class="text-lg font-semibold">Jane Doe</h3>
+      <p class="text-sm text-gray-600">"Delicious food! Perfectly portioned and full of flavor."</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <input type="radio" name="carousel" id="carousel-2" class="hidden peer/slide2">
+    <div class="absolute inset-0 opacity-0 peer-checked/slide2:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center">
+      <img src="https://i.pravatar.cc/100?img=2" alt="" class="w-30 h-30 rounded-full mb-4" />
+      <h3 class="text-lg font-semibold">John Smith</h3>
+      <p class="text-sm text-gray-600">"Great experience — the salmon bowl is my favorite!"</p>
+    </div>
+
+    <!-- Slide 3 -->
+    <input type="radio" name="carousel" id="carousel-3" class="hidden peer/slide3">
+    <div class="absolute inset-0 opacity-0 peer-checked/slide3:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center">
+      <img src="https://i.pravatar.cc/100?img=3" alt="" class="w-30 h-30 rounded-full mb-4" />
+      <h3 class="text-lg font-semibold">Emily Rose</h3>
+      <p class="text-sm text-gray-600">"Fresh, fast, and fabulous food. Highly recommend it!"</p>
+    </div>
+  </div>
+
+  <!-- Navigation Dots -->
+  <div class="flex justify-center gap-4 mt-6">
+    <label for="carousel-1" class="w-3 h-3 bg-gray-300 rounded-full cursor-pointer peer-checked/slide1:bg-gray-800"></label>
+    <label for="carousel-2" class="w-3 h-3 bg-gray-300 rounded-full cursor-pointer peer-checked/slide2:bg-gray-800"></label>
+    <label for="carousel-3" class="w-3 h-3 bg-gray-300 rounded-full cursor-pointer peer-checked/slide3:bg-gray-800"></label>
+  </div>
+</div>
+
+
+
+    <!-- Footer -->
+<footer id="footer" class="bg-white shadow-inner mt-10">
+  <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <!-- Left -->
+      <div class="text-gray-600 text-sm">
+        &copy; 2025 MyShop. All rights reserved.
+      </div>
+
+      <!-- Center: Navigation -->
+      <div class="flex space-x-6 text-gray-600 text-sm">
+        <a href="#" class="hover:text-[#ff6347] transition">Home</a>
+        <a href="#menu" class="hover:text-[#ff6347] transition">Menu</a>
+        <a href="#footer" class="hover:text-[#ff6347] transition">Contact</a>
+      </div>
+
+      <!-- Right: Socials -->
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-600 hover:text-[#ff6347] transition">
+          <!-- Facebook Icon -->
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="#" class="text-gray-600 hover:text-[#ff6347] transition">
+          <!-- Twitter Icon -->
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="#" class="text-gray-600 hover:text-[#ff6347] transition">
+          <!-- Instagram Icon -->
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+</body>
+</html>

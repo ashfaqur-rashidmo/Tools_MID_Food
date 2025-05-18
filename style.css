@@ -1,0 +1,49 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+#display-card {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  #display-card {
+    grid-template-columns: repeat(2, 1fr); /* sm */
+    align-items: center;
+
+  }
+}
+
+@media(min-width: 425px) {
+   #display-card{
+    align-items: center;
+   }
+}
+
+@media (min-width: 1024px) {
+  #display-card {
+    grid-template-columns: repeat(4, 1fr); /* lg */
+  }
+}
+
+
+
+.FoodDelivery{
+    display: grid;
+   grid-template-columns: 1300px 300px;
+}
+
+#details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.875rem; 
+  color: #374151;
+  line-height: 1.5;
+}
+
+#orderDetails {
+  display: none;
+}
