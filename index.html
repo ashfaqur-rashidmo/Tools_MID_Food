@@ -32,7 +32,7 @@
         <!-- Desktop Cart Icon -->
         <div class="relative cursor-pointer" onclick="orderDetails()">
           <i class="fas fa-shopping-cart text-2xl"></i>
-          <span id="cart-badge"
+          <span id="cart-badge-desktop"
                 class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 rounded-full">
             0
           </span>
@@ -54,14 +54,16 @@
     <a href="#menu" class="block text-gray-700 hover:text-[#ff6347]">Menu</a>
     <a href="#footer" class="block text-gray-700 hover:text-[#ff6347]">Contact Us</a>
 
+    
     <!-- Mobile Cart Icon -->
-    <div class="relative cursor-pointer" onclick="orderDetails()">
-      <i class="fas fa-shopping-cart text-2xl"></i>
-      <span id="cart-badge"
-            class=" -top-2 -right-2 bg-red-600 text-white text-xs px-2 rounded-full">
-        0
-      </span>
-    </div>
+<div class="relative cursor-pointer w-6 h-6" onclick="orderDetails()">
+  <i class="fas fa-shopping-cart text-2xl"></i>
+  <span id="cart-badge-mobile"
+        class="absolute -top-2 -right-3 bg-red-600 text-white text-[10px] px-1.5 rounded-full">
+    0
+  </span>
+</div>
+
   </div>
 </nav>
 
@@ -110,14 +112,17 @@
 </div>
 
 
-
 </section>
-
 
 
         </div>
         
-
+        <!-- Mobile Menu Button -->
+<div class="md:hidden flex items-center">
+  <button onclick="toggleMobileMenu()" id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</div>
 
       </div>
     </div>
@@ -182,7 +187,6 @@
 
 
 
-
     <!-- displaying Cart -->
  <div class="container mx-auto px-4 py-6" id="menu">
   <h1 class="text-center font-bold text-3xl mt-4">Products</h1>
@@ -193,6 +197,7 @@
 
   
 
+ 
 <!-- Customer review -->
  <!-- Carousel Container -->
   <h1 class="text-center font-bold text-3xl mt-4">Customer Review</h1>

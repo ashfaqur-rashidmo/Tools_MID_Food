@@ -1,7 +1,7 @@
 let allProducts = []; 
 
 const searchProduct = () => {
-  fetch("https://ashfaqur-rashidmo.github.io/API/Foods.json")
+  fetch("https://ashfaqur-rashidmo.github.io/API_New/Food.json")
     .then(res => res.json())
     .then(data => {
       allProducts = data; 
@@ -122,17 +122,26 @@ const updatePrice = (price) => {
   DeliveryCharge(newPrice);
 };
 
+
 // cart badge
-const updateCartBadge = ()=> {
-  const badge = document.getElementById("cart-badge");
+const updateCartBadge = () => {
+  const badge_desktop = document.getElementById("cart-badge-desktop");
+  const badge_mobile = document.getElementById("cart-badge-mobile");
 
   if (count > 0) {
-    badge.textContent = count; 
-    badge.classList.remove("hidden");
+    if (badge_desktop) {
+      badge_desktop.textContent = count;
+      badge_desktop.classList.remove("hidden");
+    }
+    if (badge_mobile) {
+      badge_mobile.textContent = count;
+      badge_mobile.classList.remove("hidden");
+    }
   } else {
-    badge.classList.add("hidden");
+    if (badge_desktop) badge_desktop.classList.add("hidden");
+    if (badge_mobile) badge_mobile.classList.add("hidden");
   }
-}
+};
 
 
 
