@@ -335,7 +335,7 @@ const Discount = () => {
   const TotalElement = document.getElementById("total");
   let Total = parseFloat(TotalElement.innerText.replace('$', ''));
 
-  if (Total >= 1000) {
+  if (Total >= 500) {
     const discount = Total * 0.1;
     Total -= discount;
     TotalElement.innerText = `$${Total.toFixed(2)}`;
@@ -346,7 +346,7 @@ const Discount = () => {
     `;
   } else {
     document.getElementById("details").innerHTML = `
-      <p class="text-red-600">❗ Spend $1000 or more to unlock 10% discount.</p>
+      <p class="text-red-600">❗ Spend $500 or more to unlock 10% discount.</p>
     `;
   }
 };
