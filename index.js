@@ -145,7 +145,7 @@ const updateCartBadge = () => {
 
 
 
-
+// remove any product from card
 const removeFromCart = (id, price) => {
   if (cartItems[id] && cartItems[id] > 0) {
     cartItems[id]--;
@@ -164,7 +164,8 @@ const removeFromCart = (id, price) => {
       delete cartItems[id];
     }
 
-    updateCartBadge(); 
+    updateCartBadge();
+    updateCartView();
   } else {
     alert("This item is not in the cart.");
   }
